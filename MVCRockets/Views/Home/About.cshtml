@@ -1,7 +1,43 @@
 ﻿@{
     ViewBag.Title = "About";
+
+    //create variables and use in HTML
+    var FavColour = "Red";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h3 style="color:@FavColour">@ViewBag.Message</h3>
+
+@*
+This a comment
+    and anothe line of comment
+*@
+
+@*
+USe C# syntax to reteurn browser type  
+*@
+You are using @Request.Browser.Browser, and thats great!
 
 <p>Use this area to provide additional information.</p>
+
+
+@{var amounts = new List<decimal> { 100, 120, 18.34m, -30, -4, 7 }; }
+
+<ul>
+    @foreach (var a in amounts)
+    {
+        <li>@formatAmount(a)</li>
+    }
+
+</ul>
+
+
+
+@helper formatAmount(decimal amount) { 
+var color = "green";
+if (amount < 0)
+{
+        color = "red";
+}
+<span style="color:@color">@string.Format("{0:c}",amount)</span>
+
+    }
