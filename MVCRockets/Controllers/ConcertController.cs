@@ -33,5 +33,5 @@ namespace MVCRockets.Controllers
             //right-click on the View() -> Add view -> give it a name and select detail -> Concert (MVCRockets.Models))
         }
     }
-    
+     
 }
