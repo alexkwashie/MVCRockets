@@ -7,21 +7,57 @@
 <h2>@ViewBag.Title.</h2>
 
 <div id="formSection">
-    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "formSection" }))
-    {
-      
-            <div>@ViewBag.Message</div>
-            <textarea  id="message" name="message"></textarea>
-            <input type="submit" value="send" />
+
+<div>@ViewBag.Message</div>
+<form method="post" id="contactForm">
+<textarea id="message" name="message"></textarea>
+    <input type="submit" value="send" />
+    <!--Adding Loadgin gif-->
+    <p>
+        <img src="~/Images/loading.gif" id="loading" style="display:none; width:30px" />
+    </p>
+</form>
+
+</div>
+
+
+@section scripts{
+    
+<script>
+    $('#contactForm').submit(function () {
+        $('#loading').show();
+        $.post('', { message: $('#message').val() })
+            .done(function (response) {
+                setTimeout(function () { $('#formSection').html(response); }, 2000);
+            });
+        return false;
+    });
+
+    </script>
+
         
     }
 
 
-</div>
 
-@section scripts{
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    }
+@*
+    <div id="formSection">
+        @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "formSection" }))
+        {
+
+                <div>@ViewBag.Message</div>
+                <textarea  id="message" name="message"></textarea>
+                <input type="submit" value="send" />
+
+        }
+
+
+    </div>
+
+    @section scripts{
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        }
+*@
 
 <address>
     One Microsoft Way<br />

@@ -206,6 +206,7 @@
     <Content Include="Images\DesMoines.jpeg" />
     <Content Include="Images\Drummer.jpeg" />
     <Content Include="Images\KansasCity.jpeg" />
+    <Content Include="Images\loading.gif" />
     <Content Include="Images\Minneapolis.jpeg" />
     <Content Include="Images\NewYork.jpeg" />
     <Content Include="Images\Omaha.jpeg" />
