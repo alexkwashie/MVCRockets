@@ -39,13 +39,14 @@ namespace MVCRockets.Controllers
         {
             //TODO: Save input and act on it(eg. send to database etc)
             ViewBag.Message = "Thank you for the reply";
-            return View();
+            return PartialView("_ThanksForFeedBack");
+            //Create a partial view in the shared folder name it "_ThanksForFeedBack"
         }
 
 
-       
 
-            public ActionResult Backstage(string secret, string format)
+
+        public ActionResult Backstage(string secret, string format)
         {
             if(secret != "special")
             {

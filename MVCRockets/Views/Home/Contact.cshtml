@@ -1,14 +1,27 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
+
+<!--Using Ajax to prevent page Load-->
+
 <h2>@ViewBag.Title.</h2>
-<div>@ViewBag.Message</div>
 
-<form method="post">
-    <textarea name="message"></textarea>
-    <input type="submit"/>
-</form>
+<div id="formSection">
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "formSection" }))
+    {
+      
+            <div>@ViewBag.Message</div>
+            <textarea  id="message" name="message"></textarea>
+            <input type="submit" value="send" />
+        
+    }
 
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    }
 
 <address>
     One Microsoft Way<br />
