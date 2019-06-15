@@ -8,36 +8,52 @@
 
 <div id="formSection">
 
-<div>@ViewBag.Message</div>
-<form method="post" id="contactForm">
-<textarea id="message" name="message"></textarea>
-    <input type="submit" value="send" />
-    <!--Adding Loadgin gif-->
-    <p>
-        <img src="~/Images/loading.gif" id="loading" style="display:none; width:30px" />
-    </p>
-</form>
+    <div>@ViewBag.Message</div>
+    <form method="post" id="contactForm">
+<textarea id="message" data-bind="value:message, valueUpdate:'input'" name="message" maxlength="50"></textarea>
+        <input type="submit" value="send"/>
+        <!--Adding Loadgin gif-->
+        <p><span data-bind="text:charactersRemaining"></span> characters remaining</p>
+        <p>
+            <img src="~/Images/loading.gif" id="loading" style="display:none; width:30px" />
+        </p>
+    </form>
 
 </div>
 
 
 @section scripts{
-    
-<script>
-    $('#contactForm').submit(function () {
-        $('#loading').show();
-        $.post('', { message: $('#message').val() })
-            .done(function (response) {
-                setTimeout(function () { $('#formSection').html(response); }, 2000);
-            });
-        return false;
-    });
+
+<script src="~/Scripts/knockout-3.5.0.js"></script>
+
+    <!--KnockoutJS script-->
+    <script>
+        function contactViewModel(){
+            var self = this;
+            self.message = ko.observable('');
+            self.charactersRemaining = ko.computed(function () { return 50 - self.message().length; })
+        }
+
+        ko.applyBindings(new contactViewModel());
 
     </script>
 
-        
-    }
+    <script>
+        $('#contactForm').submit(function () {
+            $('#loading').show();
+            $.post('', { message: $('#message').val() })
+                .done(function (response) {
+                    setTimeout(function () { $('#formSection').html(response); }, 1000);
+                });
+            return false;
+        });
 
+    </script>
+
+
+}
+
+<!--OR use below for Ajax Calls-->
 
 
 @*
