@@ -54,9 +54,9 @@ namespace MVCRockets
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "2240830249371852",
+               appSecret: "7d759a873ee6a0331c69b7ce69359f86");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

@@ -1,6 +1,7 @@
 ﻿using MVCRockets.Filter;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -9,7 +10,6 @@ using System.Web.Mvc;
 namespace MVCRockets.Controllers
 {
     //[Authorize (Roles ="Admin", Users = "Mike")] //Only allow Admin and Mike
-
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -33,7 +33,7 @@ namespace MVCRockets.Controllers
             return View();
         }
 
-
+        
         [HttpPost]
         public ActionResult Contact(string message)
         {
