@@ -10,6 +10,7 @@ using MVCRockets.Models;
 
 namespace MVCRockets.Controllers
 {
+    [Authorize (Users = "asd@test.com")] //show for only specified user
     public class myConcertsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
